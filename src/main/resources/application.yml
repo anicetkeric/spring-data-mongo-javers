@@ -1,0 +1,25 @@
+
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: javers_demo
+      username: admin
+      password: admin
+
+  jackson:
+    default-property-inclusion: NON_NULL
+
+
+# Enable Logging mongo queries
+logging:
+  level:
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+
+
+javers:
+  documentDbCompatibilityEnabled: false
+  objectAccessHook: org.javers.spring.mongodb.DBRefUnproxyObjectAccessHook
+  snapshotsCacheSize: 5000
