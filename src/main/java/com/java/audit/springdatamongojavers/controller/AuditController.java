@@ -4,7 +4,6 @@ import com.java.audit.springdatamongojavers.domain.Employee;
 import org.javers.core.Changes;
 import org.javers.core.Javers;
 import org.javers.core.diff.Change;
-import org.javers.core.diff.Diff;
 import org.javers.core.json.JsonConverter;
 import org.javers.core.metamodel.object.CdoSnapshot;
 import org.javers.repository.jql.QueryBuilder;
@@ -27,7 +26,7 @@ public class AuditController {
     }
 
     @GetMapping("/employee")
-    public ResponseEntity<String> getPersonChanges() {
+    public ResponseEntity<String> getEmployeeChanges() {
         QueryBuilder jqlQuery = QueryBuilder.byClass(Employee.class);
 
         List<Change> changes = javers.findChanges(jqlQuery.build());
@@ -36,8 +35,8 @@ public class AuditController {
     }
 
 
-    @GetMapping("/persons")
-    public String getPersonChanges2() {
+    @GetMapping("/employees")
+    public String getEmployeeChanges2() {
         QueryBuilder jqlQuery = QueryBuilder.byClass(Employee.class)
                 .withNewObjectChanges();
 
@@ -47,7 +46,7 @@ public class AuditController {
     }
 
     @GetMapping("/employee/{id}")
-    public String getPersonChanges(@PathVariable String id) {
+    public String getEmployeeChanges(@PathVariable String id) {
         QueryBuilder jqlQuery = QueryBuilder.byInstanceId(id, Employee.class)
                 .withNewObjectChanges();
 
@@ -57,7 +56,7 @@ public class AuditController {
     }
 
     @GetMapping("/employee/snapshots")
-    public String getPersonSnapshots() {
+    public String getEmployeeSnapshots() {
         QueryBuilder jqlQuery = QueryBuilder.byClass(Employee.class);
 
         List<CdoSnapshot> changes = new ArrayList(javers.findSnapshots(jqlQuery.build()));
@@ -70,7 +69,7 @@ public class AuditController {
     }
 
     @GetMapping("/employee/{login}/snapshots")
-    public String getPersonSnapshots(@PathVariable String login) {
+    public String getEmployeeSnapshots(@PathVariable String login) {
         QueryBuilder jqlQuery = QueryBuilder.byInstanceId(login, Employee.class);
 
         List<CdoSnapshot> changes = javers.findSnapshots(jqlQuery.build());
@@ -83,3 +82,5 @@ public class AuditController {
     }
 
 }
+
+
