@@ -3,11 +3,11 @@
 spring:
   data:
     mongodb:
-      host: localhost
+      host: 127.0.0.1
       port: 27017
-      database: javers_demo
-      username: admin
-      password: admin
+      database: javers_audit_db
+      username: javersuser
+      password: bk2rFn*d
 
   jackson:
     default-property-inclusion: NON_NULL
@@ -23,3 +23,6 @@ javers:
   documentDbCompatibilityEnabled: false
   objectAccessHook: org.javers.spring.mongodb.DBRefUnproxyObjectAccessHook
   snapshotsCacheSize: 5000
+  snapshotCollectionName: "jv_snapshots"
+  headCollectionName: "jv_head_id"
+  schemaManagementEnabled: true

@@ -17,7 +17,7 @@ public class EmployeeController {
 
 
     @GetMapping()
-    public List<Employee> showNewEmployeeForm() {
+    public List<Employee> getAll() {
         return employeeService.getAll();
 
     }
